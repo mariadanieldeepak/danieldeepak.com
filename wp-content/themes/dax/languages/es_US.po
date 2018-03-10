@@ -1,0 +1,403 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: dax\n"
+"POT-Creation-Date: 2017-03-01 14:16+0800\n"
+"PO-Revision-Date: 2017-03-01 14:24+0800\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: style.css\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;"
+"_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: es_US\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+# ¡Vaya! No se puede encontrar esa página.
+#: 404.php:9
+msgid "Oops! That page can&rsquo;t be found."
+msgstr "Oops! That page can&rsquo;t be found."
+
+#: 404.php:13
+msgid "It looks like nothing was found at this location. Maybe try a search?"
+msgstr "Parece que no se encontró nada en este lugar. ¿Puede buscar de nuevo?"
+
+#: archive.php:25 index.php:25 search.php:23
+msgid "Previous page"
+msgstr "Pág. Anterior"
+
+#: archive.php:26 index.php:26 search.php:24
+msgid "Next page"
+msgstr "Pág. Siguiente"
+
+#: archive.php:27 index.php:27 search.php:25 templates/content-page.php:18
+#: templates/content-single.php:33 templates/content.php:46
+msgid "Page"
+msgstr "Página"
+
+#: comments.php:15
+#, php-format
+msgctxt "comments title"
+msgid "One thought on &ldquo;%s&rdquo;"
+msgstr "Un comentario en &ldquo;%s&rdquo;"
+
+#: comments.php:19
+#, php-format
+msgctxt "comments title"
+msgid "%1$s thought on &ldquo;%2$s&rdquo;"
+msgid_plural "%1$s thoughts on &ldquo;%2$s&rdquo;"
+msgstr[0] ""
+msgstr[1] ""
+
+# los comentarios están cerrados
+#: comments.php:51
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:42
+msgid "https://wpdia.com/"
+msgstr "https://wpdia.com/"
+
+#: footer.php:42
+#, php-format
+msgid "Theme by %s"
+msgstr "Tema por%s"
+
+#: functions.php:28 header.php:45
+msgid "Primary Menu"
+msgstr "Menú principal"
+
+#: functions.php:67
+msgid "Sidebar"
+msgstr "Barra lateral"
+
+#: functions.php:69
+msgid "Add widgets here to appear in your sidebar."
+msgstr "Añada widgets aquí para que aparezcan en su barra lateral."
+
+#: functions.php:77
+msgid "Footer 1"
+msgstr "Pie de página 1"
+
+#: functions.php:79 functions.php:89 functions.php:99
+msgid "Appears at the bottom of the content on posts and pages."
+msgstr ""
+"Aparece en la parte inferior del contenido de los mensajes y las páginas."
+
+#: functions.php:87
+msgid "Footer 2"
+msgstr "Pie de página 2"
+
+#: functions.php:97
+msgid "Footer 3"
+msgstr "Pie de página 3"
+
+#: functions.php:114
+msgctxt "Merriweather font: on or off"
+msgid "on"
+msgstr "en [Fuente PT Serif: encendido o apagado]"
+
+#: functions.php:118
+msgctxt "Montserrat font: on or off"
+msgid "on"
+msgstr "en [Fuente PT Serif: encendido o apagado]"
+
+#: functions.php:122
+msgctxt "Inconsolata font: on or off"
+msgid "on"
+msgstr "en [Fuente PT Serif: encendido o apagado]"
+
+#: functions.php:161
+msgid "expand child menu"
+msgstr "Expande el submenú"
+
+#: functions.php:162
+msgid "collapse child menu"
+msgstr "Colapsa el submenú"
+
+#: header.php:41
+msgid "Menu"
+msgstr "Menú"
+
+#: inc/back-compat.php:14 inc/back-compat.php:20
+#, php-format
+msgid ""
+"dax requires at least WordPress version 4.7. You are running version %s. "
+"Please upgrade and try again."
+msgstr ""
+"Omanán requiere al menos la versión 4.0 de Wordpress. Estás usando la "
+"versión %s. Por favor actualiza e intenta de nuevo."
+
+#: inc/back-compat.php:29
+#, php-format
+msgid ""
+"dax requires at least WordPress version 4.4. You are running version %s. "
+"Please upgrade and try again."
+msgstr ""
+"Omanán requiere al menos la versión 4.0 de Wordpress. Estás usando la "
+"versión %s. Por favor actualiza e intenta de nuevo."
+
+#: inc/customizer.php:81
+msgid "Link Color"
+msgstr "Color de los enlaces"
+
+#: inc/customizer.php:92
+msgid "Main Text Color"
+msgstr "Color del texto principal"
+
+#: inc/customizer.php:103
+msgid "Secondary Text Color"
+msgstr "Color del texto secundario"
+
+#: inc/customizer.php:111
+msgid "Dax Options"
+msgstr "Opciones de Dax"
+
+#: inc/customizer.php:112
+msgid "Panel to update dax theme options"
+msgstr "Panel para actualizar las opciones del tema sparkling"
+
+#: inc/customizer.php:119
+msgid "Header"
+msgstr "Encabezado"
+
+#: inc/customizer.php:130
+msgid "Sticky Header"
+msgstr "Encabezado Fijo"
+
+#: inc/customizer.php:131
+msgid "Check to show fixed header"
+msgstr "Verificación Mostrar encabezado fijo"
+
+#: inc/customizer.php:142
+msgid "Top nav background color"
+msgstr "Color de fondo top nav"
+
+#: inc/customizer.php:143
+msgid "Default used if no color is selected"
+msgstr "Predeterminada si no se selecciona ningún color"
+
+#: inc/customizer.php:152
+msgid "Top nav item color"
+msgstr "Color de elemento de top nav"
+
+#: inc/customizer.php:153
+msgid "Link color"
+msgstr "Color de enlace"
+
+#: inc/customizer.php:164
+msgid "Top nav dropdown background color"
+msgstr "lista desplegable color de fondo"
+
+#: inc/customizer.php:165
+msgid "Background of dropdown item hover color"
+msgstr "Fondo de color del hover artículo dropdown"
+
+#: inc/customizer.php:175
+msgid "Top nav dropdown item color"
+msgstr "Color de listado desplegable de top nav"
+
+#: inc/customizer.php:176
+msgid "Dropdown item color"
+msgstr "Menú desplegable color del artículo"
+
+# pie de página
+#: inc/customizer.php:183
+msgid "Footer"
+msgstr ""
+
+#: inc/customizer.php:193
+msgid "Footer widget area background color"
+msgstr "Color de fondo del pie de página del área de Widgets"
+
+#: inc/customizer.php:203
+msgid "Footer background color"
+msgstr "Color de fondo del footer"
+
+#: inc/customizer.php:213
+msgid "Footer & Widget text color"
+msgstr "Color del texto en el widget del pie de página"
+
+#: inc/customizer.php:223
+msgid "Footer & Widget link color"
+msgstr "Color de fuente del widget del pie de página"
+
+#: inc/customizer.php:233
+msgid "Footer information"
+msgstr "Información de pie de página"
+
+#: inc/customizer.php:234
+msgid "Copyright text in footer"
+msgstr "Set copyright text in footer"
+
+#: inc/customizer.php:258
+msgid "Default"
+msgstr "Por defecto"
+
+#: inc/template-tags.php:7
+msgctxt "Used before post author name."
+msgid "Author"
+msgstr "Autor"
+
+#: inc/template-tags.php:20
+msgctxt "Used before post format."
+msgid "Format"
+msgstr "Formato"
+
+#: inc/template-tags.php:32
+#, php-format
+msgid "Leave a comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#: inc/template-tags.php:54
+msgctxt "Used before publish date."
+msgid "Posted on"
+msgstr "Publicada en"
+
+#: inc/template-tags.php:63 inc/template-tags.php:71
+msgctxt "Used between list items, there is a space after the comma."
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:66
+msgctxt "Used before category names."
+msgid "Categories"
+msgstr "Categorías"
+
+#: inc/template-tags.php:74
+msgctxt "Used before tag names."
+msgid "Tags"
+msgstr "Etiquetas"
+
+#: inc/template-tags.php:120
+#, php-format
+msgid "<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr ""
+
+#: search.php:11
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Resultados de búsqueda de: %s"
+
+#: searchform.php:4
+msgctxt "label"
+msgid "Search for:"
+msgstr "Buscar por:"
+
+#: searchform.php:5
+msgctxt "placeholder"
+msgid "Search &hellip;"
+msgstr "Buscar &hellip;"
+
+#: searchform.php:7
+msgctxt "submit button"
+msgid "Search"
+msgstr "Búsqueda"
+
+#: single.php:17
+msgctxt "Parent post link"
+msgid ""
+"<span class=\"meta-nav\">Published in</span><span class=\"post-title\">"
+"%title</span>"
+msgstr ""
+
+#: single.php:21
+msgid "Next"
+msgstr "Siguiente"
+
+#: single.php:22
+msgid "Next post:"
+msgstr "Próxima publicación:"
+
+#: single.php:24
+msgid "Previous"
+msgstr "Anterior"
+
+#: single.php:25
+msgid "Previous post:"
+msgstr "Publicación anterior:"
+
+#: templates/biography.php:12
+msgid "Author:"
+msgstr "Autor:"
+
+#: templates/biography.php:17
+#, php-format
+msgid "View all posts by %s"
+msgstr "Ver todos os artículos de %s"
+
+#: templates/content-none.php:4
+msgid "Nothing Found"
+msgstr "No hemos encontrado ninguna óptica"
+
+#: templates/content-none.php:10
+#, php-format
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+"¿Listo para publicar tu primer artículo? <a href=\"%1$s\">Empieza aquí</a>."
+
+#: templates/content-none.php:14
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Lo siento, no he encontrado nada relacionado con tu búsqueda. Por favor, "
+"inténtalo de nuevo con otra búsqueda."
+
+#: templates/content-none.php:19
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr "Parece que no puedo encontrar lo que estás buscando. Quizá"
+
+#: templates/content-page.php:14 templates/content-single.php:29
+#: templates/content.php:42
+msgid "Pages:"
+msgstr "Páginas:"
+
+#: templates/content-page.php:27 templates/content-search.php:18
+#: templates/content-search.php:32 templates/content-single.php:13
+#: templates/content.php:20
+#, php-format
+msgid "Edit<span class=\"screen-reader-text\"> \"%s\"</span>"
+msgstr "Editar<span class=\"screen-reader-text\"> \"%s\"</span>"
+
+#: templates/content.php:5
+msgid "Featured"
+msgstr "Destacado"
+
+#: templates/content.php:34
+msgid "Read More"
+msgstr "Leer más"
+
+#. Theme Name of the plugin/theme
+msgid "dax"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://wpdia.com/dax/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Dax is the best free wordpress theme. This is a responsive and retina-ready "
+"Wordpress theme and easy to use.Dax is the best choice for you !"
+msgstr ""
+"Dax es el mejor tema wordpress gratis. Este es un tema de Wordpress "
+"sensible y retina-listo y fácil de usar. ¡Dax es la mejor opción para usted!"
+
+#. Author of the plugin/theme
+msgid "Dax"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://wpdia.com"
+msgstr ""

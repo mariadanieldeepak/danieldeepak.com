@@ -1,0 +1,6 @@
+# Files
+wp-config.php
+
+# Directories
+.idea/
+wp-content/uploads/

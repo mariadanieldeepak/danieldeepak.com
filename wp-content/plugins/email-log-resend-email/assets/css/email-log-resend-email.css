@@ -1,0 +1,37 @@
+/**
+ * Style for Email Log - Resend Email Plugin.
+ *
+ * http://sudarmuthu.com/wordpress/email-log
+ *
+ * @author: Sudar <http://sudarmuthu.com>
+ */
+
+form#elre-resend-email-form label {
+	display: block;
+	float: left;
+	clear: left;
+	margin: 10px 0;
+}
+
+form#elre-resend-email-form label span {
+	display: block;
+	float: left;
+	width: 150px;
+	margin-right: 20px;
+}
+
+form#elre-resend-email-form label input,
+form#elre-resend-email-form label textarea {
+	float: left;
+	width: 300px;
+}
+
+form#elre-resend-email-form legend {
+	font-size: large;
+	font-weight: bold;
+}
+
+.elre-resend-email-spinner {
+	padding-top: 5px;
+	padding-left: 5px;
+}

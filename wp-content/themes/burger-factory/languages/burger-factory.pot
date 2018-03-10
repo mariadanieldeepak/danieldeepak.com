@@ -1,0 +1,152 @@
+# Copyright (C) 2017 Angus Woodman
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Burger Factory 1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/theme/burger-factory\n"
+"POT-Creation-Date: 2017-02-15 20:17:42+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: 404.php:21
+msgid "404"
+msgstr ""
+
+#: 404.php:25
+msgid "There's no page at this address."
+msgstr ""
+
+#: comments.php:31 comments.php:52
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:34 comments.php:55
+msgid "Older Comments"
+msgstr ""
+
+#: comments.php:35 comments.php:56
+msgid "Newer Comments"
+msgstr ""
+
+#: comments.php:69
+msgid "Comments are closed."
+msgstr ""
+
+#: footer.php:20
+msgid "Theme by <a href=\"https://anguswoodman.com/\" rel=\"designer\">Angus Woodman</a>"
+msgstr ""
+
+#: functions.php:47
+msgid "Primary"
+msgstr ""
+
+#: functions.php:90
+msgid "Sidebar"
+msgstr ""
+
+#: functions.php:100
+msgid "After Entry"
+msgstr ""
+
+#: functions.php:92
+msgid "Add widgets here."
+msgstr ""
+
+#: functions.php:102
+msgid "These widgets output after a single post."
+msgstr ""
+
+#: header.php:21
+msgid "Previous"
+msgstr ""
+
+#: header.php:25
+msgid "Next"
+msgstr ""
+
+#: header.php:32
+msgid "Skip to content"
+msgstr ""
+
+#. translators: used between list items, there is a space after the comma
+#: inc/template-tags.php:38 inc/template-tags.php:62
+msgid ", "
+msgstr ""
+
+#: inc/template-tags.php:40
+msgid "Tags: %1$s"
+msgstr ""
+
+#. translators: %s: post title
+#: inc/template-tags.php:47
+msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
+msgstr ""
+
+#: inc/template-tags.php:65
+msgid "%1$s"
+msgstr ""
+
+#: index.php:26
+msgid "Search Results for: %s"
+msgstr ""
+
+#: index.php:61
+msgid "More"
+msgstr ""
+
+#: index.php:78
+msgid "Nothing Found"
+msgstr ""
+
+#: index.php:85
+msgid ""
+"Ready to publish your first post? <a href=\"%1$s\">Get started here</a>."
+msgstr ""
+
+#: index.php:89
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+
+#: index.php:95
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""
+
+#. translators: %s: Name of current post.
+#: page.php:36 single.php:54
+msgid "Continue reading %s <span class=\"meta-nav\">&rarr;</span>"
+msgstr ""
+
+#: page.php:41 single.php:59
+msgid "Pages:"
+msgstr ""
+
+#. Theme Name of the plugin/theme
+msgid "Burger Factory"
+msgstr ""
+
+#. Theme URI of the plugin/theme
+msgid "https://anguswoodman.com/wordpress-theme-burger-factory"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Burger Factory is a minimalist theme for writers. It puts focus on the words "
+"instead of images. Uses excerpts as summaries. Can still be used standard-"
+"blog-style."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Angus Woodman"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://anguswoodman.com"
+msgstr ""

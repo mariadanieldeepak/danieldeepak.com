@@ -1,0 +1,21 @@
+/*
+ Theme Name:   Twenty Sixteen Child
+ Theme URI:    https://wordpress.org/themes/twentysixteen/
+ Description:  Twenty Sixteen Child Theme
+ Author:       Maria Daniel Deepak
+ Author URI:   http://mariadanieldeepak.com
+ Template:     twentysixteen
+ Version:      0.0.1
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  twenty-fifteen-child
+*/
+
+body:not(.search-results) .entry-summary {
+	font-size: 1rem;
+}
+
+code {
+	background: blanchedalmond !important;
+}

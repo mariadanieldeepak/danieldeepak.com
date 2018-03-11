@@ -3,10 +3,8 @@
 add_action( 'wp_footer', 'simplent_child_enqueue_tag_manager' );
 
 function simplent_child_enqueue_tag_manager() {
-	//var_dump(file_exists(get_stylesheet_directory() . '/assets/js/simplent-child-tag-manager.js')); die;
 	include( get_stylesheet_directory() . '/assets/js/simplent-child-tag-manager.js' );
 }
-
 
 add_action( 'wp_enqueue_scripts', 'simplent_child_enqueue_styles' );
 

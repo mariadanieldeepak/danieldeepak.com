@@ -54,8 +54,6 @@ class Jetpack_VideoPress {
 
 		add_filter( 'wp_video_extensions', array( $this, 'add_videopress_extenstion' ) );
 
-		$this->add_media_new_notice();
-
 		VideoPress_Scheduler::init();
 		VideoPress_XMLRPC::init();
 	}
@@ -114,22 +112,6 @@ class Jetpack_VideoPress {
 	}
 
 	/**
-	 * Add a notice to the top of the media-new.php to let the user know how to upload a video.
-	 */
-	public function add_media_new_notice() {
-		global $pagenow;
-
-		if ( $pagenow != 'media-new.php' ) {
-			return;
-		}
-
-		$jitm = Jetpack_JITM::init();
-
-		add_action( 'admin_enqueue_scripts', array( $jitm, 'jitm_enqueue_files' ) );
-		add_action( 'admin_notices', array( $jitm, 'videopress_media_upload_warning_msg' ) );
-	}
-
-	/**
 	 * Register and enqueue VideoPress admin styles.
 	 */
 	public function enqueue_admin_styles() {
@@ -148,7 +130,10 @@ class Jetpack_VideoPress {
 		if ( $this->should_override_media_uploader() ) {
 			wp_enqueue_script(
 				'videopress-plupload',
-				plugins_url( 'js/videopress-plupload.js', __FILE__ ),
+				Jetpack::get_file_url_for_environment(
+					'_inc/build/videopress/js/videopress-plupload.min.js',
+					'modules/videopress/js/videopress-plupload.js'
+				),
 				array(
 					'jquery',
 					'wp-plupload'
@@ -158,7 +143,10 @@ class Jetpack_VideoPress {
 
 			wp_enqueue_script(
 				'videopress-uploader',
-				plugins_url( 'js/videopress-uploader.js', __FILE__ ),
+				Jetpack::get_file_url_for_environment(
+					'_inc/build/videopress/js/videopress-uploader.min.js',
+					'modules/videopress/js/videopress-uploader.js'
+				),
 				array(
 					'videopress-plupload'
 				),
@@ -167,7 +155,10 @@ class Jetpack_VideoPress {
 
 			wp_enqueue_script(
 				'media-video-widget-extensions',
-				plugins_url( 'js/media-video-widget-extensions.js', __FILE__ ),
+				Jetpack::get_file_url_for_environment(
+					'_inc/build/videopress/js/media-video-widget-extensions.min.js',
+					'modules/videopress/js/media-video-widget-extensions.js'
+				),
 				array(),
 				$this->version,
 				true

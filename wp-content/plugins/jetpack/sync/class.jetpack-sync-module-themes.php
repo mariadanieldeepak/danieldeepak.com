@@ -12,9 +12,10 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 		add_action( 'jetpack_installed_theme', $callable, 10, 2 );
 		add_action( 'jetpack_updated_theme', $callable, 10, 2 );
 		add_action( 'delete_site_transient_update_themes', array( $this, 'detect_theme_deletion') );
-		add_action( 'jetpack_deleted_theme', $callable );
+		add_action( 'jetpack_deleted_theme', $callable, 10, 2 );
 		add_filter( 'wp_redirect', array( $this, 'detect_theme_edit' ) );
 		add_action( 'jetpack_edited_theme', $callable, 10, 2 );
+		add_action( 'wp_ajax_edit-theme-plugin-file', array( $this, 'theme_edit_ajax' ), 0 );
 		add_action( 'update_site_option_allowedthemes', array( $this, 'sync_network_allowed_themes_change' ), 10, 4 );
 		add_action( 'jetpack_network_disabled_themes', $callable, 10, 2 );
 		add_action( 'jetpack_network_enabled_themes', $callable, 10, 2 );
@@ -32,16 +33,21 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 	}
 
 	public function sync_widget_edit( $instance, $new_instance, $old_instance, $widget_object ) {
+		if ( empty( $old_instance ) ) {
+			return $instance;
+		}
+
 		$widget = array(
 			'name' => $widget_object->name,
 			'id' => $widget_object->id,
+			'title' => isset( $new_instance['title'] ) ? $new_instance['title'] : '',
 		);
 		/**
 		 * Trigger action to alert $callable sync listener that a widget was edited
 		 *
 		 * @since 5.0.0
 		 *
-		 * @param string $widget_name, Name of edited widget
+		 * @param string $widget_name , Name of edited widget
 		 */
 		do_action( 'jetpack_widget_edited', $widget );
 
@@ -52,6 +58,13 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 		$all_enabled_theme_slugs = array_keys( $value );
 
 		if ( count( $old_value ) > count( $value ) )  {
+
+			//Suppress jetpack_network_disabled_themes sync action when theme is deleted
+			$delete_theme_call = $this->get_delete_theme_call();
+			if ( ! empty( $delete_theme_call ) ) {
+				return;
+			}
+
 			$newly_disabled_theme_names = array_keys( array_diff_key( $old_value, $value ) );
 			$newly_disabled_themes = $this->get_theme_details_for_slugs( $newly_disabled_theme_names );
 			/**
@@ -131,20 +144,125 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 		return $redirect_url;
 	}
 
-	public function detect_theme_deletion() {
-		$backtrace = debug_backtrace();
-		$delete_theme_call = null;
-		foreach ( $backtrace as $call ) {
-			if ( isset( $call['function'] ) && 'delete_theme' === $call['function'] ) {
-				$delete_theme_call = $call;
-				break;
+	public function theme_edit_ajax() {
+		$args = wp_unslash( $_POST );
+
+		if ( empty( $args['theme'] ) ) {
+			return;
+		}
+
+		if ( empty( $args['file'] ) ) {
+			return;
+		}
+		$file = $args['file'];
+		if ( 0 !== validate_file( $file ) ) {
+			return;
+		}
+
+		if ( ! isset( $args['newcontent'] ) ) {
+			return;
+		}
+
+		if ( ! isset( $args['nonce'] ) ) {
+			return;
+		}
+
+		$stylesheet = $args['theme'];
+		if ( 0 !== validate_file( $stylesheet ) ) {
+			return;
+		}
+
+		if ( ! current_user_can( 'edit_themes' ) ) {
+			return;
+		}
+
+		$theme = wp_get_theme( $stylesheet );
+		if ( ! $theme->exists() ) {
+			return;
+		}
+
+		$real_file = $theme->get_stylesheet_directory() . '/' . $file;
+		if ( ! wp_verify_nonce( $args['nonce'], 'edit-theme_' . $real_file . $stylesheet ) ) {
+			return;
+		}
+
+		if ( $theme->errors() && 'theme_no_stylesheet' === $theme->errors()->get_error_code() ) {
+			return;
+		}
+
+		$editable_extensions = wp_get_theme_file_editable_extensions( $theme );
+
+		$allowed_files = array();
+		foreach ( $editable_extensions as $type ) {
+			switch ( $type ) {
+				case 'php':
+					$allowed_files = array_merge( $allowed_files, $theme->get_files( 'php', -1 ) );
+					break;
+				case 'css':
+					$style_files = $theme->get_files( 'css', -1 );
+					$allowed_files['style.css'] = $style_files['style.css'];
+					$allowed_files = array_merge( $allowed_files, $style_files );
+					break;
+				default:
+					$allowed_files = array_merge( $allowed_files, $theme->get_files( $type, -1 ) );
+					break;
 			}
 		}
+
+		if ( 0 !== validate_file( $real_file, $allowed_files ) ) {
+			return;
+		}
+
+		// Ensure file is real.
+		if ( ! is_file( $real_file ) ) {
+			return;
+		}
+
+		// Ensure file extension is allowed.
+		$extension = null;
+		if ( preg_match( '/\.([^.]+)$/', $real_file, $matches ) ) {
+			$extension = strtolower( $matches[1] );
+			if ( ! in_array( $extension, $editable_extensions, true ) ) {
+				return;
+			}
+		}
+
+		if ( ! is_writeable( $real_file ) ) {
+			return;
+		}
+
+		$file_pointer = fopen( $real_file, 'w+' );
+		if ( false === $file_pointer ) {
+			return;
+		}
+
+		$theme_data = array(
+			'name' => $theme->get('Name'),
+			'version' => $theme->get('Version'),
+			'uri' => $theme->get( 'ThemeURI' ),
+		);
+
+		/**
+		 * This action is documented already in this file
+		 */
+		do_action( 'jetpack_edited_theme', $stylesheet, $theme_data );
+
+	}
+
+	public function detect_theme_deletion() {
+		$delete_theme_call = $this->get_delete_theme_call();
 		if ( empty( $delete_theme_call ) ) {
 			return;
 		}
 
 		$slug = $delete_theme_call['args'][0];
+		$theme = wp_get_theme( $slug );
+		$theme_data = array(
+			'name' => $theme->get('Name'),
+			'version' => $theme->get('Version'),
+			'uri' => $theme->get( 'ThemeURI' ),
+			'slug' => $slug,
+		);
 
 		/**
 		 * Signals to the sync listener that a theme was deleted and a sync action
@@ -153,20 +271,24 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 		 * @since 5.0.0
 		 *
 		 * @param string $slug Theme slug
+		 * @param array $theme_data Theme info Since 5.3
 		 */
-		do_action( 'jetpack_deleted_theme', $slug );
+		do_action( 'jetpack_deleted_theme', $slug, $theme_data );
 	}
 
 	public function check_upgrader( $upgrader, $details) {
 		if ( ! isset( $details['type'] ) ||
-			'theme' !== $details['type'] ||
-			is_wp_error( $upgrader->skin->result ) ||
-			! method_exists( $upgrader, 'theme_info' )
+		     'theme' !== $details['type'] ||
+		     is_wp_error( $upgrader->skin->result ) ||
+		     ! method_exists( $upgrader, 'theme_info' )
 		) {
 			return;
 		}
 
 		$theme = $upgrader->theme_info();
+		if ( ! $theme instanceof WP_Theme ) {
+			return;
+		}
 		$theme_info = array(
 			'name' => $theme->get( 'Name' ),
 			'version' => $theme->get( 'Version' ),
@@ -233,7 +355,7 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 	public function estimate_full_sync_actions( $config ) {
 		return 1;
 	}
-	
+
 	public function init_before_send() {
 		add_filter( 'jetpack_sync_before_send_jetpack_full_sync_theme_data', array( $this, 'expand_theme_data' ) );
 	}
@@ -263,6 +385,11 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 		}
 		$moved_to_sidebar = array();
 		$sidebar_name = $this->get_sidebar_name( $sidebar );
+
+		//Don't sync jetpack_widget_added if theme was switched
+		if ( $this->is_theme_switch() ) {
+			return array();
+		}
 
 		foreach ( $added_widgets as $added_widget ) {
 			$moved_to_sidebar[] = $added_widget;
@@ -342,13 +469,15 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 	}
 
 	function sync_sidebar_widgets_actions( $old_value, $new_value ) {
-
 		// Don't really know how to deal with different array_values yet.
-		if ( $old_value['array_version'] !== 3 || $new_value['array_version'] !== 3 ) {
+		if (
+			( isset( $old_value['array_version'] ) && $old_value['array_version'] !== 3 ) ||
+			( isset( $new_value['array_version'] ) && $new_value['array_version'] !== 3 )
+		) {
 			return;
 		}
 
-		$moved_to_inactive = array();
+		$moved_to_inactive_ids = array();
 		$moved_to_sidebar = array();
 
 		foreach ( $new_value as $sidebar => $new_widgets ) {
@@ -359,14 +488,23 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 				? $old_value[ $sidebar ]
 				: array();
 
+			if ( ! is_array( $new_widgets ) ) {
+				$new_widgets = array();
+			}
+
 			$moved_to_inactive_recently = $this->sync_remove_widgets_from_sidebar( $new_widgets, $old_widgets, $sidebar, $new_value['wp_inactive_widgets'] );
-			$moved_to_inactive_ids = array_merge( $moved_to_inactive, $moved_to_inactive_recently );
+			$moved_to_inactive_ids = array_merge( $moved_to_inactive_ids, $moved_to_inactive_recently );
 
 			$moved_to_sidebar_recently = $this->sync_add_widgets_to_sidebar( $new_widgets, $old_widgets, $sidebar );
 			$moved_to_sidebar = array_merge( $moved_to_sidebar, $moved_to_sidebar_recently );
 
 			$this->sync_widgets_reordered( $new_widgets, $old_widgets, $sidebar );
 
+		}
+
+		//Don't sync either jetpack_widget_moved_to_inactive or jetpack_cleared_inactive_widgets if theme was switched
+		if ( $this->is_theme_switch() ) {
+			return;
 		}
 
 		// Treat inactive sidebar a bit differently
@@ -390,7 +528,7 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 			 * @since 4.9.0
 			 */
 			do_action( 'jetpack_cleared_inactive_widgets' );
-		} 
+		}
 	}
 
 	private function get_theme_support_info() {
@@ -406,9 +544,28 @@ class Jetpack_Sync_Module_Themes extends Jetpack_Sync_Module {
 		}
 
 		$theme = wp_get_theme();
-		$theme_support['name'] = $theme->name;
-		$theme_support['version'] =  $theme->version;
+		$theme_support['name'] = $theme->get('Name');
+		$theme_support['version'] =  $theme->get('Version');
+		$theme_support['slug'] = $theme->get_stylesheet();
+		$theme_support['uri'] = $theme->get('ThemeURI');
+
 
 		return $theme_support;
+	}
+
+	private function get_delete_theme_call() {
+		$backtrace = debug_backtrace();
+		$delete_theme_call = null;
+		foreach ( $backtrace as $call ) {
+			if ( isset( $call['function'] ) && 'delete_theme' === $call['function'] ) {
+				$delete_theme_call = $call;
+				break;
+			}
+		}
+		return $delete_theme_call;
+	}
+
+	private function is_theme_switch() {
+		return did_action( 'after_switch_theme' );
 	}
 }

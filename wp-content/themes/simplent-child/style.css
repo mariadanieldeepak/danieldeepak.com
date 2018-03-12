@@ -23,3 +23,7 @@ body.page-id-127 .sharedaddy,
 body.page-id-158 .sharedaddy {
     display: none;
 }
+.wpcf7-form-control-wrap {
+    margin: 0 0 1.75em 0;
+}
+

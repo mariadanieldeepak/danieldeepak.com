@@ -24,6 +24,10 @@ body.page-id-158 .sharedaddy {
     display: none;
 }
 
+.wpcf7-form-control-wrap {
+    margin: 0 0 1.75em 0;
+}
+
 /* Better styles for embedding GitHub Gists */
 .gist table td {
     border: 0 !important;
@@ -31,7 +35,4 @@ body.page-id-158 .sharedaddy {
 
 .gist table td.blob-code {
     padding-left: 25px !important;
-}.wpcf7-form-control-wrap {
-    margin: 0 0 1.75em 0;
 }
-

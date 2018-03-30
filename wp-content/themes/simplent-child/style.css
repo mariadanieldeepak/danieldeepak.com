@@ -23,3 +23,12 @@ body.page-id-127 .sharedaddy,
 body.page-id-158 .sharedaddy {
     display: none;
 }
+
+/* Better styles for embedding GitHub Gists */
+.gist table td {
+    border: 0 !important;
+}
+
+.gist table td.blob-code {
+    padding-left: 25px !important;
+}

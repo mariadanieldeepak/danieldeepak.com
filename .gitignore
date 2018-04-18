@@ -4,3 +4,7 @@ wp-config.php
 # Directories
 .idea/
 wp-content/uploads/
+
+# Plugins
+wp-content/plugins/mdd-wedding-timer/node_modules/
+wp-content/plugins/mdd-wedding-timer/.env

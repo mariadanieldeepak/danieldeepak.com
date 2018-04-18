@@ -3,7 +3,7 @@
 Plugin Name:  MDD Wedding Timer
 Plugin URI:   https://danieldeepak.com/wedding/
 Description:  Show the Wedding count down.
-Version:      1.0.0
+Version:      1.0.1
 Author:       Maria Daniel Deepak
 Author URI:   https://danieldeepak.com
 License:      GPL2
@@ -20,14 +20,14 @@ function mdd_w_t_include_scripts() {
 	wp_enqueue_script( 'app',
 		plugins_url( 'bundle.js', __FILE__ ),
 		array(),
-		'1.0.0',
+		'1.0.1',
         true
 	);
 
 	wp_enqueue_style( 'wedding',
 		plugins_url( 'wedding.css', __FILE__ ),
 		array(),
-		'1.0.0'
+		'1.0.1'
 	);
 }
 

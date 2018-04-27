@@ -42,7 +42,7 @@ class Timer extends React.Component {
     constructor(props) {
         super(props);
 
-        this.oldLabel = "To be married in ",
+        this.oldLabel = "Wedding in ",
         this.newLabel = "Married since ",
         this.weddingDate = new Date(2018, 4, 27, 10, 0, 0, 0);
         this.state = {

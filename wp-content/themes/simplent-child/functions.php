@@ -3,9 +3,13 @@
 add_action( 'wp_footer', 'simplent_child_enqueue_tag_manager' );
 
 function simplent_child_enqueue_tag_manager() {
-	if ( ! is_user_logged_in() && simplent_child_is_production() ) {
-		include( get_stylesheet_directory() . '/assets/js/simplent-child-tag-manager.js' );
+	if ( is_user_logged_in() ) {
+		return;
 	}
+	if ( ! simplent_child_is_production() ) {
+		return;
+	}
+	include( get_stylesheet_directory() . '/assets/js/simplent-child-tag-manager.js' );
 }
 
 add_action( 'wp_enqueue_scripts', 'simplent_child_enqueue_styles' );

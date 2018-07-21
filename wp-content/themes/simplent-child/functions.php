@@ -1,12 +1,12 @@
 <?php
 
-add_action( 'wp_footer', 'simplent_child_enqueue_tag_manager' );
+add_action( 'wp_enqueue_scripts', 'simplent_child_enqueue_tag_manager' );
 
 function simplent_child_enqueue_tag_manager() {
 	if ( is_user_logged_in() ) {
 		return;
 	}
-	if ( ! simplent_child_is_production() ) {
+	if ( false === simplent_child_is_production() ) {
 		return;
 	}
 
@@ -39,6 +39,6 @@ function simplent_child_enqueue_styles() {
 
 if ( ! function_exists( 'simplent_child_is_production' ) ) {
 	function simplent_child_is_production() {
-		return (boolean) strpos( WP_SITEURL, 'danieldeepak.com' );
+		return (bool) strpos( $_SERVER['HTTP_HOST'], 'danieldeepak.com' );
 	}
 }

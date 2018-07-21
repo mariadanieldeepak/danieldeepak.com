@@ -9,7 +9,23 @@ function simplent_child_enqueue_tag_manager() {
 	if ( ! simplent_child_is_production() ) {
 		return;
 	}
-	include( get_stylesheet_directory() . '/assets/js/simplent-child-tag-manager.js' );
+
+	wp_enqueue_script( 'google-analytics-gtag',
+		'https://www.googletagmanager.com/gtag/js?id=UA-71731040-1',
+		array(),
+		null,
+		true
+		);
+
+	$script_data = <<<EOL
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'UA-71731040-1');
+EOL;
+
+	wp_add_inline_script( 'google-analytics-gtag', $script_data, 'after' );
 }
 
 add_action( 'wp_enqueue_scripts', 'simplent_child_enqueue_styles' );

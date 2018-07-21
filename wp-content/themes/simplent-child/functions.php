@@ -39,6 +39,6 @@ function simplent_child_enqueue_styles() {
 
 if ( ! function_exists( 'simplent_child_is_production' ) ) {
 	function simplent_child_is_production() {
-		return (bool) strpos( $_SERVER['HTTP_HOST'], 'danieldeepak.com' );
+		return strpos( $_SERVER['HTTP_HOST'], 'danieldeepak.com' ) >= 0 ? true : false;
 	}
 }

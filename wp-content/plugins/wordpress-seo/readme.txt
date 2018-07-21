@@ -5,8 +5,8 @@ License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl.html
 Tags: SEO, XML sitemap, Google Search Console, Content analysis, Readability
 Requires at least: 4.8
-Tested up to: 4.9.4
-Stable tag: 7.0.2
+Tested up to: 4.9.7
+Stable tag: 7.8
 Requires PHP: 5.2.4
 
 Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.
@@ -15,7 +15,7 @@ Improve your WordPress SEO: Write better content and have a fully optimized Word
 
 ### Yoast SEO: the #1 WordPress SEO plugin
 
-Need an SEO plugin that helps you reach for the stars? Yoast SEO is the original WordPress SEO plugin since 2008. It is the favorite tool of millions of users, ranging from the bakery around the corner to some of the most popular sites on the planet. With Yoast SEO, you get a solid toolset that helps you aim for that number one spot in the search results. Yoast: SEO for everyone.
+Need some help with your search engine optimization? Need an SEO plugin that helps you reach for the stars? Yoast SEO is the original WordPress SEO plugin since 2008. It is the favorite tool of millions of users, ranging from the bakery around the corner to some of the most popular sites on the planet. With Yoast SEO, you get a solid toolset that helps you aim for that number one spot in the search results. Yoast: SEO for everyone.
 
 Yoast SEO does everything in its power to please both visitors and search engine spiders. How? Below you’ll find a small sampling of the powers of Yoast SEO:
 
@@ -62,7 +62,7 @@ Bug reports for Yoast SEO are [welcomed on GitHub](https://github.com/Yoast/word
 
 ### Further Reading
 
-For more info, check out the following articles:
+For more info on search engine optimization, check out the following:
 
 * The [Yoast SEO Plugin](https://yoa.st/1v8) official homepage.
 * The [Yoast SEO Knowledgebase](https://yoa.st/1va).
@@ -106,128 +106,92 @@ You'll find answers to many of your questions on [kb.yoast.com](https://yoa.st/1
 
 == Changelog ==
 
-= 7.0.2 =
-Release Date: March 8th, 2018
-
-Bugfixes:
-* Fixes a bug where a fatal error occurs on a taxonomy edit page when social graphs has been disabled for either Facebook or Twitter.
-* Fixes a bug where the breadcrumb path were missing parent entries.
-* Fixes a bug where RSS `before` and `after` content settings were being cleaned too aggressively.
-* Fixes the problem that other plugins are depending on the options we've removed. This patch adds those options as backfills to make them available again.
-
-= 7.0.1 =
-Release Date: March 6th, 2018
-
-Bugfixes:
-* Fixes a bug where the some settings are not properly migrated after upgrading to 7.0.
-
-= 7.0.0 =
-Release Date: March 6th, 2018
+= 7.8.0 =
+Release Date: July 10th, 2018
 
 Enhancements:
-* Interface:
-    * Introduces an overhaul of the Admin settings to simplify the plugin configuration.
-    * Introduces a new setting to redirect attachment URLs. Previously, we had an option to redirect attachment URLs to their post parent. This didn't work for attachments that weren't attached to anything. This new setting redirects *all* attachment URLs to the URL of the original image / media item. This is all explained on the new `Media` tab under `Search Appearance`. This setting is enabled by default for new installations.
-    * Moves the `Text link counter calculation` to the `Tools` submenu.
-    * Moves the RSS tab from `Advanced` to `Search Appearance`.
-    * Removes the option to remove the `replytocom` variable. We now disable this automatically with a filter (`wpseo_remove_reply_to_com`).
-    * Removes the option to exclude an author from the XML sitemap in favor of a broader option. Instead, we now have an option to set whether this author's archive should be visible in the search results. If you choose not to allow this archive in the search results, it's also excluded from the author sitemap.
-    * Removes the XML sitemaps settings page in favor of a feature toggle on the Features tab and a question in Titles & Meta's "Do you want to show X in search results?".
-    * Moves the setting to disable the Advanced Meta Box for authors to the Features Tab. The setting now also defaults to 'On'.
-    * Expands the content analysis headers by default.
-
-* JSON+LD:
-    * Shows JSON+LD markup for website and search on the front page.
-    * Makes sure JSON+LD organization markup properly links to the frontpage.
-
-* Copy:
-    * Clarifies the copy on the Edit Post page to ask "Allow search engines to show this Post in search results?" instead of having a heading "Meta Robots", which was quite difficult to understand for non-SEO's. Similar changes have been made to the `follow` / `nofollow` setting.
-    * Introduces the question: "Allow search engines to show this `<taxonomy>` in search results?" and bases both the `noindex` and the inclusion in XML sitemaps on this decision.
-    * Changes the wording in the indexing dropdown menu in the Advanced Tab of the metabox from `Yes (Default for posts)` / `Yes` / `No` to `Default for Posts, currently: Yes` / `Yes` / `No`.
-    * Renames the Dashboard menu item to General.
-
-* Other:
-    * Removes the feature that automatically removed stop words from the slug.
-    * Removes `media` post type from the Configuration Wizard, which brings the question about indexing in line with the rest of the plugin.
-    * Removes `jQuery UI autocomplete` from the enqueued scripts.
-    * Adds a filter `wpseo_exclude_from_sitemap_by_post_ids` for controlling which posts are excluded from the sitemap.
-    * Improves the switch toggle settings for use with assistive technologies.
-    * Removes code to add a trailing slash in weird permutations of permalink settings. Canonical should solve this properly.
-    * Removes the functionality to automatically remove blocking XML sitemap files.
-    * Removes the clean permalinks feature, as it was created before canonical was introduced and is no longer needed.
-    * Fixes a reference to the `ACF Content Analysis for Yoast SEO` plugin.
-    * Removes all functions, methods and files that were deprecated since before version 4.0 and were showing a deprecation warning.
-    * Removes the plugin conflict check for the `Head, Footer and Post Injections`-plugin as it no longer manages OpenGraph tags.
-    * Migrates the `hideeditbox-<post type>` and `hideeditbox-tax-<taxonomy>` settings to a saner `display-metabox-pt-<post type>` and `display-metabox-tax-<taxonomy>` settings.
+* Improves the way that the OpenGraph is determined for front pages, especially in the case of static front pages.
+* Adds links to relevant articles to all SEO assessments.
+* Adds Flesch Reading Ease assessment for French.
+* Adds Flesch Reading Ease assessment for Spanish.
+* Adds passive voice assessment for Italian.
 
 Bugfixes:
-
-* Hides the "Save changes" button on option tabs where there is nothing to save.
-* Fixes a bug where you would not stay on the same option tab after using the save button in Safari.
-* When we set `noindex` on a page, we no longer add a canonical, to prevent confusing search engines.
-* Fixes an issue where the categories / tags overview pages were incorrectly showing elements marked as noindex when in reality they weren't set to noindex (and vice versa). This meant that blue bullets were being shown incorrectly.
-* Fixes an issue where setting posts and pages to noindex didn't change the overview.
-
-Security:
-
-* Fixes a security issue where importing of the values of ini files were being parsed for dynamic content.
-
-= 6.3.1 =
-Release Date: February 19th, 2018
-
-Bugfixes:
-
-* Fixes a bug where a non-existing JavaScript `chunk` file was loaded, causing a console error. This only affected users using a locale different than `en_US`.
-
-= 6.3.0 =
-Release Date: February 13th, 2018
-
-Bugfixes:
-
-* Reverts the shortlink in the HTML comment back to the hard link it was before.
-* Fixes a bug where the Local SEO for WooCommerce extension was not shown on the licenses page.
-* Fixes a bug where the `current_user_can()` function was not called with the post ID as argument.
-* Fixes a bug where the auto-generated meta descriptions were not using the new 320 characters limitation.
-* Fixes a bug where specific external links were not filtered from the post_type sitemap.
-* Fixes a bug where trashed posts were displayed in the bulk editor overview.
-* Fixes a bug where old meta values were not deleted during import.
-* Fixes a bug where only 10 posts when executing meta robots import from wpSEO.de.
-* Clears the sitemap cache when the Site URL is changed.
-
-Enhancements:
-
-* Adds an importer for the SEO Ultimate plugin SEO data.
-* Adds an importer for the SEOpressor plugin SEO data.
-* Adds links to explanatory articles on the features tab.
-* Adds additional explanation for entries on the features tab.
-* Improves Open Graph copy for Facebook and Twitter in the Social settings to better explain what it does.
-* Improves Content Analysis and Publish box copy for better translations.
-* Applies design changes to the Help Center support tab for Premium.
+* Fixes a bug where images from password protected posts could potentially end up in OpenGraph image tags.
+* Fixes a bug where very old notifications could not be be dismissed or restored.
+* Fixes a bug where the `Insert snippet variable` button alignment was incorrect.
+* Fixes a bug where the snippet variables had a different label in the Search Appearance settings compared to the snippet variables when writing a post, pages and taxonomies.
+* Fixes a bug where instances of the same keyword with different kinds of apostrophes (e.g., brain’s and brain's) were not recognized as the same. This affects the following assessments: keyword in meta description, keyword in subheading, keyword in first paragraph, keyword in title and keyword in URL.
+* Fixes a bug where the custom set breadcrumb title for the WooCommerce Shop page wasn't used.
 
 Other:
+* Adds a reminder message to create a redirect if a user deletes a category or tag.
+* Removes a banner spot in the admin.
 
-* Removes "meta keywords" from the plugin as this has had no search result value for at least 7 years.
-* Removes the "noindex subpages" feature as Google has gotten much better at paginated series, and it's now actually detrimental to use.
-* Removes the "Other" tab from the Titles & Metas settings screen, as all options have been moved or removed.
-* Security hardening.
-
-= 6.2.0 =
-Release Date: January 23rd, 2018
-
-Enhancements:
-
-* Allows more strings to be translated.
-* Adds the passive voice assessment for French.
-* Adds the passive voice assessment for Spanish.
-* Simplifies the feedback message for the assessment that checks whether subheadings contain the keyword.
+= 7.7.3 =
+Release Date: July 2nd, 2018
 
 Bugfixes:
+* Disables WordPress' automatic conversion of emoji to images on every page where the snippet editor is present. This conversion is not compatible with React or content editable fields and broke the snippet editor.
+* Fixes text directionality for the title and description fields in the snippet editor for right-to-left languages.
+* Fixes a bug where the snippet title and description values were saved to the database if they did match the post-type template.
 
-* Security hardening through stricter code checks.
-* Reduces the number of times the content analysis is refreshed on page load.
-* Fixes a bug where relative URLs were not counted as internal links in the internal link assessment.
-* Fixes a bug where Premium users would be shown ads when following a certain path through the SEO menu.
-* Fixes a bug where the method of setting the title and meta description templates for the WooCommerce shop page would not work anymore.
+= 7.7.2 =
+Release Date: June 29th, 2018
+
+Bugfixes:
+* Fixes a bug where the snippet variables selection is hidden behind the WordPress menu when using a right-to-left language.
+* Fixes styling in the snippet preview when using a right-to-left language.
+* Fixes a bug where the 'insert snippet variable' button placement was inconsistent.
+* Migrates WooCommerce Product archive settings to the Shop page, if present and not already set on the Shop page.
+
+= 7.7.1 =
+Release Date: June 27th, 2018
+
+Bugfixes:
+* Fixes a bug where disabling the `post_format` archive would result in it actually being enabled and vice versa.
+* Fixes an issue where all replacement variables were being displayed instead of the recommended ones.
+
+Other:
+* Restores `currentyear` as a snippet variable.
+
+= 7.7.0 =
+Release Date: June 26th, 2018
+
+Enhancements:
+* Implements the snippet preview in React. This brings an improved user experience regarding the snippet variables, making it easier to use and discover them.
+* Implements the improved snippet variables on the search appearance settings pages.
+* Adds an inserter to the title and metadescription fields to make it easier to insert a snippet variable.
+* Improves the mobile snippet preview to match the Google mobile search results more closely.
+* Changes the behavior of the meta description preview when there is no handwritten meta description. We no longer mimic Google by showing a part of your content, but explain what Google does instead.
+* Sends the user to the proper control in the customizer when clicking the link in the "You still have the default WordPress tagline [...]" warning message.
+* Adds a `wpseo_attachment_redirect_url` filter to allow changing of the target redirection URL for attachments. This may be necessary to restore the redirect to the parent post. Props to [cawa-93](https://github.com/cawa-93).
+* Adds recommended snippet variables for templates depending on the context.
+* Adds a `wpseo_recommended_replace_vars` filter to allow adding or altering the recommended snippet variables.
+* Adds support for JSON-LD breadcrumbs. Props to [teolaz](https://github.com/teolaz)
+* Improves the lists of French transition words, stopwords, and function words, props to [Laurent-1971](https://github.com/Laurent-1971).
+* Improves the assessment that checks the use of subheadings so that it always returns relevant feedback to the user.
+* Adds a notification when a post is removed.
+* Overhauls the Content Types section under SEO -> Search Appearance by sectioning the post types and allowing users to collapse them. This is especially handy when you have a lot of custom post types.
+* Updates the 'snippet variables tab' of the Help Center to have the new names.
+
+Bugfixes:
+* Fixes a bug where a PHP notice would be triggered when the `opcache.restrict_api` directive was enabled.
+* Fixes a bug where restricting SEO setting access to network admins only on a multisite, would still allow regular admins to have access to SEO settings.
+* Fixes a bug where dismissing notifications on a single site in a multisite environment, would result in the notification being dismissed on all sites.
+* Fixes a bug where the attachment URL would redirect to `wp-admin` if the attachment was located on a different Site URL domain.
+* Fixes a bug where MySQL would throw a "Duplicate entry 'X'" error into the error log when attempting to upsert a record in the database.
+* Fixes a performance problem where the selecting a fallback Open Graph image would collect the filename for all the images in the content. This has been changed to detecting if an image is usable per image and stopping when a usable image is found.
+* Fixes a bug where the term title snippet variable would be replaced by 'undefined' instead of an empty string on posts and pages.
+* Fixes a bug where PHP notices got triggered on archive pages when `%%pt_single%%` and/or `%%pt_plural%%` are used in a template.
+* Fixes a bug where the configured separator wasn't used in the title template fallback that's being used when no title template has been set.
+
+Deprecated:
+* Deprecates the following snippet variables: %%userid%%, %%currenttime%%, %%currentdate%%, %%currentday%%, %%currentmonth%%, %%currentyear%%.
+
+Other:
+* Changes the timing on which the capability filter is run to better time when notifications should be initialized.
+* Adds X-Redirect-By header to all redirects, making the origin of redirects much easier to debug.
 
 = Earlier versions =
 

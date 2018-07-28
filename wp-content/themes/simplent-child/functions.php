@@ -42,3 +42,16 @@ if ( ! function_exists( 'simplent_child_is_production' ) ) {
 		return strpos( $_SERVER['HTTP_HOST'], 'danieldeepak.com' ) >= 0 ? true : false;
 	}
 }
+
+if ( function_exists( 'simplent_child_load_scripts_async' ) ) {
+	function simplent_child_load_scripts_async($tag, $handle, $src) {
+		$allowed_handles = [ 'jquery-core', 'jquery-migrate' ];
+
+		if ( ! in_array( $handle, $allowed_handles, true ) ) {
+			return $tag;
+		}
+		return str_replace( ' src', ' async="async" src', $tag );
+	}
+}
+
+add_filter( 'script_loader_tag', 'simplent_child_load_scripts_async', 10, 3 );

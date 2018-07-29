@@ -43,7 +43,7 @@ if ( ! function_exists( 'simplent_child_is_production' ) ) {
 	}
 }
 
-if ( function_exists( 'simplent_child_load_scripts_async' ) ) {
+if ( ! function_exists( 'simplent_child_load_scripts_async' ) ) {
 	function simplent_child_load_scripts_async($tag, $handle, $src) {
 		$allowed_handles = [ 'jquery-core', 'jquery-migrate' ];
 
@@ -55,3 +55,30 @@ if ( function_exists( 'simplent_child_load_scripts_async' ) ) {
 }
 
 add_filter( 'script_loader_tag', 'simplent_child_load_scripts_async', 10, 3 );
+
+function simplent_child_preload_styles($html, $handle, $href, $media) {
+	print_r($html);die;
+	echo "<br />";
+
+	$allowed_handles = [
+		'contact-form-7',
+		'dashicons',
+		'simplent-google-fonts',
+		'bootstrap',
+		'font-awesome',
+		'simplent-style',
+		'parent-style',
+		'jetpack-widget-social-icons-styles',
+		'sharedaddy',
+		'social-logos',
+		'jetpack_css'
+	];
+
+	if ( ! in_array( $handle, $allowed_handles, true ) ) {
+		return $html;
+	}
+
+	return str_replace( ' src', ' async="async" src', $tag );;
+}
+
+//add_filter( 'style_loader_tag', 'simplent_child_preload_styles', 10, 4 );

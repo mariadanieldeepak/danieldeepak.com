@@ -45,7 +45,7 @@ if ( ! function_exists( 'simplent_child_is_production' ) ) {
 
 if ( ! function_exists( 'simplent_child_load_scripts_async' ) ) {
 	function simplent_child_load_scripts_async($tag, $handle, $src) {
-		$allowed_handles = [ 'jquery-core', 'jquery-migrate' ];
+		$allowed_handles = [ 'jquery-migrate' ];
 
 		if ( ! in_array( $handle, $allowed_handles, true ) ) {
 			return $tag;
@@ -57,7 +57,7 @@ if ( ! function_exists( 'simplent_child_load_scripts_async' ) ) {
 add_filter( 'script_loader_tag', 'simplent_child_load_scripts_async', 10, 3 );
 
 function simplent_child_preload_styles($html, $handle, $href, $media) {
-	print_r($html);die;
+	echo '<pre>' . $html . '</pre>';die;
 	echo "<br />";
 
 	$allowed_handles = [
@@ -78,7 +78,7 @@ function simplent_child_preload_styles($html, $handle, $href, $media) {
 		return $html;
 	}
 
-	return str_replace( ' src', ' async="async" src', $tag );;
+	return $html;
 }
 
 //add_filter( 'style_loader_tag', 'simplent_child_preload_styles', 10, 4 );

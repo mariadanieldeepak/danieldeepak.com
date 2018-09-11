@@ -2,7 +2,13 @@
 wp-config.php
 
 # Directories
+## Composer
+vendor/
+
+## PHPStorm
 .idea/
+
+# WordPress
 wp-content/uploads/
 
 # Plugins

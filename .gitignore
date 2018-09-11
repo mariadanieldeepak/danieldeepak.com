@@ -1,5 +1,5 @@
 # Files
-wp-config.php
+src/wp-config.php
 
 # Directories
 ## Composer
@@ -9,8 +9,8 @@ vendor/
 .idea/
 
 # WordPress
-wp-content/uploads/
+src/wp-content/uploads/
 
 # Plugins
-wp-content/plugins/mdd-wedding-timer/node_modules/
-wp-content/plugins/mdd-wedding-timer/.env
+src/wp-content/plugins/mdd-wedding-timer/node_modules/
+src/wp-content/plugins/mdd-wedding-timer/.env

@@ -27,7 +27,7 @@ set('keep_releases', 3);
 host('barman')
 	->user('daniel')
 	->stage('production')
-	->set('deploy_path', '~/var/www/{{application}}/html')
+	->set('deploy_path', '/var/www/{{application}}/html')
 	->configFile('~/.ssh/config')
 	->identityFile('~/.ssh/danieldeepak_id_rsa');
 

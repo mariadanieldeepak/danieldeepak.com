@@ -3,13 +3,13 @@ src/wp-config.php
 
 # Directories
 ## Composer
-vendor/
+vendor/*
 
 ## PHPStorm
-.idea/
+.idea/*
 
 # WordPress
-src/wp-content/uploads/
+src/wp-content/uploads/*
 
 # Plugins
 src/wp-content/plugins/mdd-wedding-timer/node_modules/

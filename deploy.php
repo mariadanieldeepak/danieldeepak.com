@@ -27,7 +27,7 @@ set('keep_releases', 3);
 host('barman')
 	->user('daniel')
 	->stage('production')
-	->set('deploy_path', '/var/www/{{application}}/html')
+	->set('deploy_path', '/var/www/{{application}}/')
 	->configFile('~/.ssh/config')
 	->identityFile('~/.ssh/danieldeepak_id_rsa');
 
@@ -46,6 +46,8 @@ task('deploy', [
     'deploy:vendors',
     'deploy:clear_paths',
     'deploy:symlink',
+    'deploy:symlink_wpconfig', // Custom task
+    'deploy:symlink_src', // Custom task
     'deploy:unlock',
     'cleanup',
     'success'
@@ -54,8 +56,19 @@ task('deploy', [
 // [Optional] If deploy fails automatically unlock.
 after('deploy:failed', 'deploy:unlock');
 
-// My tasks.
-task('pwd', function () {
-	$result = run('pwd');
-	writeln("Current dir: $result");
+// Custom tasks.
+desc('Copies the src/* to html/ directory');
+task('deploy:symlink_wpconfig', function () {
+	$dir = get('deploy_path');
+	$result = run('cd {{deploy_path}} && 
+	ln -s /var/www/{{application}}/config/wp-config.php current/src/;
+	');
+});
+
+desc('Copies the src/* ');
+task('deploy:symlink_src', function () {
+	$dir = get('deploy_path');
+	$result = run('cd {{deploy_path}} && 
+	ln -s /var/www/{{application}}/current/src/ html;
+	');
 });

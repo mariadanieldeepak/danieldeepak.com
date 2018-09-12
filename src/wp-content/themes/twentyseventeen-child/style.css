@@ -1,0 +1,10 @@
+/*
+Theme Name: Twenty Seventeen Child
+Template: twentyseventeen
+*/
+
+@media screen and (min-width: 48em) {
+    .single.has-sidebar:not(.error404) #primary {
+        width: 100%;
+    }
+}

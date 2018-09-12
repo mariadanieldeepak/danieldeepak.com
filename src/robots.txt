@@ -1,1 +1,0 @@
-/var/www/danieldeepak.com/config/robots.txt

@@ -29,21 +29,3 @@ function twentyseventeen_child_enqueue_styles() {
 
 }
 add_action( 'wp_enqueue_scripts', 'twentyseventeen_child_enqueue_styles' );
-
-/**
- * Show Quotes post type in Blog page.
- *
- * @since 1.0.0
- */
-function twentyseventeen_child_include_quotes( $query ) {
-	if ( ! is_main_query() ) {
-		return;
-	}
-	// Conditional functions are not set in `pre_get_posts`.
-	// Refer https://codex.wordpress.org/Plugin_API/Action_Reference/pre_get_posts
-	if ( 'blog' !== $query->query['pagename'] ) {
-		return;
-	}
-	set_query_var( 'post_type', array( 'post', 'quote' ) );
-}
-add_action( 'pre_get_posts', 'twentyseventeen_child_include_quotes' );

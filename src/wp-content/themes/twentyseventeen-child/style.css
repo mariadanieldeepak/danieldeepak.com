@@ -8,3 +8,7 @@ Template: twentyseventeen
         width: 100%;
     }
 }
+
+blockquote cite {
+    font-size: 0.875rem;
+}

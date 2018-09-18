@@ -14,3 +14,5 @@ src/wp-content/uploads/*
 # Plugins
 src/wp-content/plugins/mdd-wedding-timer/node_modules/
 src/wp-content/plugins/mdd-wedding-timer/.env
+src/wp-content/plugins/query-monitor/
+src/wp-content/plugins/rewrite-rules-inspector/

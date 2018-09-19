@@ -9,6 +9,16 @@ Template: twentyseventeen
     }
 }
 
+/*
+ * Sidebar
+ */
 blockquote cite {
     font-size: 0.875rem;
+}
+
+/*
+ * Newsletter page
+ */
+#mc_embed_signup_scroll div {
+    margin-bottom: 0.5em;
 }

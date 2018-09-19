@@ -80,3 +80,8 @@ add_filter( 'post_type_link', 'twentyseventeen_child_quote_update_get_permalink'
  * Widgets
  */
 require_once 'inc/widgets.php';
+
+/**
+ * Google Analytics
+ */
+require_once 'inc/google-analytics.php';

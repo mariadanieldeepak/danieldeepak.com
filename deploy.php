@@ -46,9 +46,10 @@ task('deploy', [
     'deploy:vendors',
     'deploy:clear_paths',
     'deploy:symlink',
+    'deploy:unlock',
     'deploy:symlink_wpconfig', // Custom task
     'deploy:symlink_src', // Custom task
-    'deploy:unlock',
+    'deploy:symlink_uploads', // Custom task
     'cleanup',
     'success'
 ]);
@@ -61,7 +62,15 @@ desc('Copies the src/* to html/ directory');
 task('deploy:symlink_wpconfig', function () {
 	$dir = get('deploy_path');
 	$result = run('cd {{deploy_path}} && 
-	ln -s /var/www/{{application}}/config/wp-config.php current/src/;
+	ln -s /var/www/{{application}}/config/wp-config.php current/src/wp-config.php;
+	');
+});
+
+desc('Copies the src/* to html/ directory');
+task('deploy:symlink_uploads', function () {
+	$dir = get('deploy_path');
+	$result = run('cd {{deploy_path}} && 
+	ln -sf /var/www/{{application}}/media current/src/wp-content/uploads;
 	');
 });
 

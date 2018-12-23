@@ -3,6 +3,11 @@ Theme Name: Twenty Seventeen Child
 Template: twentyseventeen
 */
 
+code {
+    background-color: floralwhite;
+    padding: 0.0714rem 0.1071rem;
+}
+
 @media screen and (min-width: 48em) {
     .single.has-sidebar:not(.error404) #primary {
         width: 100%;

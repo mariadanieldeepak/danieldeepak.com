@@ -18,7 +18,9 @@ const BlogIndex = ({ data, location }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
           <article key={node.fields.slug}>
-            <header>
+            <header style={{
+              marginBottom: rhythm(1/2),
+            }}>
               <h3
                 style={{
                   marginBottom: rhythm(1 / 4),
@@ -28,9 +30,15 @@ const BlogIndex = ({ data, location }) => {
                   {title}
                 </Link>
               </h3>
-              <small>{node.frontmatter.date}</small>
+              <small style={{
+                color: `darkgray`
+              }}>
+                {node.frontmatter.date}
+              </small>
             </header>
-            <section>
+            <section style={{
+              marginBottom: rhythm(1.5),
+            }}>
               <p
                 dangerouslySetInnerHTML={{
                   __html: node.frontmatter.description || node.excerpt,
@@ -53,7 +61,7 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }, filter: { fields: {collection: {eq: "blog"}} }) {
       edges {
         node {
           excerpt

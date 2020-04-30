@@ -1,5 +1,6 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+import Img from "gatsby-image"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -10,6 +11,14 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   const post = data.markdownRemark
   const siteTitle = data.site.siteMetadata.title
   const { previous, next } = pageContext
+  const featuredImgFluid = ( post.frontmatter.featuredImage && post.frontmatter.featuredImage.childImageSharp.fluid ) || null
+  const FeaturedImg = () => {
+    if (featuredImgFluid) {
+      return <Img fluid={featuredImgFluid} />
+    }
+
+    return ''
+  }
 
   return (
     <Layout location={location} title={siteTitle}>
@@ -36,6 +45,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
           >
             {post.frontmatter.date}
           </p>
+          <FeaturedImg />
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
         <hr
@@ -88,6 +98,9 @@ export const pageQuery = graphql`
       }
     }
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      fields {
+        collection
+      }
       id
       excerpt(pruneLength: 160)
       html
@@ -95,6 +108,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         description
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

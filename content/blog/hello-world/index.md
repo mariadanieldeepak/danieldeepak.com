@@ -1,22 +1,16 @@
 ---
 title: Hello World
-date: "2015-05-01T22:12:03.284Z"
-description: "Hello World"
+date: "2016-01-01T03:30:43Z"
+description: "This is a typical hello world post to mark the beginning of my blogging journey."
+featuredImage: hello-world.jpg
 ---
 
-This is my first post on my new fake blog! How exciting!
+Hello World! It's New Year (2016) and I wish you a blessed and prosperous New Year.
 
-I'm sure I'll write a lot more interesting things in the future.
+This is my first and super short blog post to kick start my blogging expedition. You can [check 
+out](/about) what I’m up to in this blog and I’m sure we will learn a lot of stuffs together here in this blog. So stay tuned.
 
-Oh, and here's a great quote from this Wikipedia on
-[salted duck eggs](https://en.wikipedia.org/wiki/Salted_duck_egg).
+Thank you for visiting my blog and I can’t wait to publish my next post.
 
-> A salted duck egg is a Chinese preserved food product made by soaking duck
-> eggs in brine, or packing each egg in damp, salted charcoal. In Asian
-> supermarkets, these eggs are sometimes sold covered in a thick layer of salted
-> charcoal paste. The eggs may also be sold with the salted paste removed,
-> wrapped in plastic, and vacuum packed. From the salt curing process, the
-> salted duck eggs have a briny aroma, a gelatin-like egg white and a
-> firm-textured, round yolk that is bright orange-red in color.
-
-![Chinese Salty Egg](./salty_egg.jpg)
+**Image Credit**
+- Windell Oskay

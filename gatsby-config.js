@@ -8,7 +8,7 @@ module.exports = {
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://danieldeepak.com/`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `mariadanieldeepak`,
     },
   },
   plugins: [

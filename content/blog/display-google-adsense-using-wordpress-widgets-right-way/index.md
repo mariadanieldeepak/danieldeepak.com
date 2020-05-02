@@ -30,7 +30,7 @@ Let us say, you have the following code from Google Adsense dashboard.
 
 The `adsbygoogle.js` is a common Javascript file that is required on all the pages where you want to display the ads. So this should be made to load only once on the web page.
 
-~~~
+~~~js
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 ~~~
 

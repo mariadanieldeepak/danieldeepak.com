@@ -37,5 +37,5 @@ And to remove the callback, all I've to do is the following. Remember the `$func
 
 // To remove a hook, the $function_to_remove and $priority arguments must match with the hook when added.
 remove_action( 'woocommerce_before_main_content', 'woocommerce_breadcrumb', 20 );
- ~~~
+~~~
 [GitHub Gist](https://gist.github.com/mariadanieldeepak/42d6bde32f5befc6b5bb69259e6ddc0f)

@@ -75,6 +75,7 @@ const Layout = ({ location, title, children }) => {
         outline: `none`,
         transition: `transform .3s cubic-bezier(0, .52, 0, 1)`,
         cursor: `pointer`,
+        display: `none`,
       }}
            onClick={handleBtnClick}
            onKeyDown={handleKeyPress}

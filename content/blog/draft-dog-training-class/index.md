@@ -2,6 +2,7 @@
 title: 3 Reasons To Find A Dog Training Class
 date: "2020-05-05T10:51:05Z"
 description: "If you believe educating your children is important then you already have an answer to why educating your dog is important."
+status: draft
 ---
 
 If you believe educating your children is important then you already have an answer to why 

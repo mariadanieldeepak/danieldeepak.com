@@ -2,6 +2,7 @@
 title: How To Run WordPress On Your Local Windows Computer?
 date: "2016-01-08T03:30:17Z"
 description: "Installing WordPress on your local machine will improve your WordPress workflow despite you being a WordPress user or a developer. Let us learn how to install and run WordPress step-by-step on your local Windows machine."
+slug: "run-wordpress-on-local-windows-pc"
 ---
 
 Are you a WordPress user? Do you think it is a good idea to mess with your website which is used by your target customers or visitors? It is definitely not a good practice to do so.

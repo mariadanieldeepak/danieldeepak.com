@@ -4,6 +4,7 @@ date: "2016-02-05T03:30:46Z"
 description: "In this post, I'll share my insights from the Microsoft-in-campus session on 
 Power BI that I attended recently. The session focused on how developers and professionals can leverage Power BI."
 featuredImage: power-bi-featured-image.png
+slug: "msft-powerbi-session-introduction"
 ---
 
 Technical conferences and sessions are great opportunities to learn new technologies, tools and to meet exciting people.

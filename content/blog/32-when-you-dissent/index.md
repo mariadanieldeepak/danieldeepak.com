@@ -2,6 +2,7 @@
 title: When You Dissent ...
 date: "2020-09-01T22:00:00Z"
 description: Remember these words, "No one will see the world just as you do."
+slug: "when-you-dissent"
 ---
 
 A new month has just begun. Isn't it refreshing to start with a new beginning?

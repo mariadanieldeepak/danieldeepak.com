@@ -56,6 +56,9 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   if (node.internal.type === `MarkdownRemark`) {
     const instanceName = getNode(node.parent).sourceInstanceName
     let value = createFilePath({ node, getNode })
+    let frontmatterSlug = node.frontmatter.slug
+
+    value = frontmatterSlug && frontmatterSlug !== '' ? `/${frontmatterSlug}` : value;
 
     createNodeField({
       name: `slug`,
